@@ -1,0 +1,26 @@
+@import '~bootstrap/scss/bootstrap';
+
+header{
+    nav{
+        height: 80px;
+    }
+}
+
+.main-wrapper{
+    height: calc(100vh - 80px);
+
+    aside{
+        width: 200px;
+        height: 100%;
+        color: white;
+        text-align: center;
+    }
+
+}
+
+.hidden:focus{
+    outline: none;
+}
+
+
+

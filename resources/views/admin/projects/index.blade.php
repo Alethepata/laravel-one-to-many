@@ -1,0 +1,36 @@
+@extends('layouts.admin')
+
+@section('content')
+    <h1>Progetti</h1>
+
+    @if (session('success'))
+        <div class="alert alert-success" role="alert">
+            {{session('success')}}
+        </div>
+    @endif
+
+    <table class="table my-3">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Titolo</th>
+            <th scope="col">Iniziato</th>
+            <th scope="col">Finito</th>
+            <th scope="col">Azioni</th>
+          </tr>
+        </thead>
+        <tbody>
+            @foreach ($projects as $project)
+               <tr>
+                 <td>{{$project->id}}</td>
+                 <td>{{$project->title}}</td>
+                 <td>{{$project->start_date }}</td>
+                 <td>{{$project->end_date }}</td>
+                 <td><a class="btn btn-success" href="{{route('admin.projects.show', $project)}}">Show</a></td>
+               </tr>
+            @endforeach
+
+        </tbody>
+      </table>
+
+@endsection
