@@ -16,6 +16,10 @@ class Type extends Model
         'slug'
     ];
 
+    public function projects(){
+        return $this->hasMany(Project::class);
+    }
+
     public static function generateSlug($string){
 
         $slug =  Str::slug($string, '-');
