@@ -16,6 +16,9 @@
             <li>
                 <a class="nav-link" href="{{route('admin.projects.create')}}">Aggiungi progetto</a>
             </li>
+            <li>
+                <a class="nav-link" href="{{route('admin.type-project')}}">Elenco</a>
+            </li>
         </ul>
     </nav>
 </aside>
