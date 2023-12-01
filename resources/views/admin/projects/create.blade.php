@@ -23,6 +23,17 @@
           <input type="text" placeholder="Nome progetto" class="form-control" name="title">
         </div>
 
+        <label for="type_id">Tipo</label>
+        <select class="form-select" name="type_id">
+            <option selected>Scegli il tipo</option>
+
+            @foreach ($types as $type)
+                <option value="{{$type->id}}">{{$type->name}}</option>
+            @endforeach
+
+
+          </select>
+
         <div class="form-floating my-5">
 
             <label for="explanation">Descrizione</label>
