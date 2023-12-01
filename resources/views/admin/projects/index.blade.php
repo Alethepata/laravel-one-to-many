@@ -16,6 +16,7 @@
             <th scope="col">Titolo</th>
             <th scope="col">Iniziato</th>
             <th scope="col">Finito</th>
+            <th scope="col">Tipo</th>
             <th scope="col">Azioni</th>
           </tr>
         </thead>
@@ -26,6 +27,7 @@
                  <td>{{$project->title}}</td>
                  <td>{{$project->start_date }}</td>
                  <td>{{$project->end_date }}</td>
+                 <td>{{$project->type->name }}</td>
                  <td><a class="btn btn-success" href="{{route('admin.projects.show', $project)}}">Show</a></td>
                </tr>
             @endforeach
