@@ -26,7 +26,13 @@
                  <td>{{$project->id}}</td>
                  <td>{{$project->title}}</td>
                  <td>{{$project->start_date }}</td>
-                 <td>{{$project->end_date }}</td>
+
+                 @if ($project->end_date)
+                    <td>{{$project->end_date }}</td>
+                @else
+                    <td>In corso</td>
+                 @endif
+
                  <td>{{$project->type->name }}</td>
                  <td><a class="btn btn-success" href="{{route('admin.projects.show', $project)}}">Show</a></td>
                </tr>
@@ -34,5 +40,6 @@
 
         </tbody>
       </table>
+      {{$projects->links()}}
 
 @endsection
