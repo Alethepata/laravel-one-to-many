@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Project;
 use App\Models\Type;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -17,7 +18,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::orderBy('id', 'desc')->paginate(5);;
         return view('admin.projects.index', compact('projects'));
     }
 
@@ -41,9 +42,23 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $form_data = $request->all();
+
         $form_data['slug'] = Project::generateSlug($form_data['title']);
+        $form_data['start_date'] = date('Y-m-d');
+
         $new_project = new Project();
+        if(array_key_exists('image', $form_data) && $form_data['image']!= ""){
+
+
+            $form_data['image_name'] = $request->file('image')->getClientOriginalName();
+
+            $form_data['image'] = Storage::put('uploads', $form_data['image']);
+
+        }
+
         $new_project->fill($form_data);
+
+
         $new_project->save();
 
         return redirect()->route('admin.projects.show', $new_project)->with('success', 'Aggiunto correttamente');;

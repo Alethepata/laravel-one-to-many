@@ -15,7 +15,7 @@
 
     @endif
 
-    <form action="{{route('admin.projects.store')}}" method="POST">
+    <form action="{{route('admin.projects.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-3">
@@ -33,6 +33,12 @@
 
 
           </select>
+
+          <div class="mb-3 my-3">
+            <label for="image" class="form-label">Imagine</label>
+            <input class="form-control" type="file" id="image" name="image">
+          </div>
+
 
         <div class="form-floating my-5">
 
